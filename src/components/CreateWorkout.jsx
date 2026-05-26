@@ -13,7 +13,28 @@ import { Field, FieldGroup } from "../components/ui/field"
 import { Input } from "../components/ui/input"
 import { Label } from "../components/ui/label"
 
-export default function CreateWorkout() {
+export default function CreateWorkout({
+  dayOfWeek,
+  setDayOfWeek,
+  musclesToHit,
+  setMusclesToHit,
+  minutes,
+  setMinutes
+}) {
+  const handleCreateWorkout = () => {
+    if (!dayOfWeek || !musclesToHit || !minutes) {
+      alert("All fields must be filled and minutes cannot be 0")
+      return;
+    }
+
+    if (minutes <= 0) {
+      alert("Please enter valid minutes")
+      return;
+    }
+
+    
+  }
+
   return (
     <Dialog>
       <form>
@@ -30,22 +51,22 @@ export default function CreateWorkout() {
           <FieldGroup>
             <Field>
               <Label htmlFor="name-1">Day of the week</Label>
-              <Input id="name-1" name="name" placeholder="Example: monday" />
+              <Input value={dayOfWeek} onChange={(e) => setDayOfWeek(e.target.value)} id="name-1" name="name" placeholder="Example: monday" />
             </Field>
             <Field>
               <Label htmlFor="username-1">Muscles you are hitting</Label>
-              <Input id="username-1" name="username" placeholder="Example: back and biceps"/>
+              <Input value={musclesToHit} onChange={(e) => setMusclesToHit(e.target.value)} id="username-1" name="username" placeholder="Example: back and biceps"/>
             </Field>
             <Field>
               <Label htmlFor="username-1">Workout time (minutes)</Label>
-              <Input id="username-1" type="number" name="username" placeholder="Example: 60"/>
+              <Input value={minutes} onChange={(e) => setMinutes(e.target.value)} id="username-1" type="number" name="username" placeholder="Example: 60"/>
             </Field>
           </FieldGroup>
           <DialogFooter>
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
-            <Button type="submit">💪Create workout</Button>
+            <Button onClick={handleCreateWorkout} type="submit">💪Create workout</Button>
           </DialogFooter>
         </DialogContent>
       </form>
