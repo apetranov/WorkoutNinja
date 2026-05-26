@@ -45,7 +45,7 @@ function App() {
         </div>
       )}
       {Object.keys(workout).length > 0 && (
-        <div className="flex w-full md:w-1/2 space-y-2 outline p-10 shadow-2xl flex-col justify-center items-center">
+        <div className="flex w-full md:w-3/4 lg:w-2/3 space-y-2 outline p-10 shadow-2xl flex-col justify-center items-center">
           <h1 className="font-bold text-center  text-4xl">📅{workout.day}</h1>
           <h1 className="text-3xl text-center font-bold text-gray-400">
             💪🏽{workout.muscles}
@@ -102,7 +102,7 @@ function App() {
                 setExerciseId={setExerciseId}
               />
             )}
-            {workout.exercises.length > 0 && <Workout workoutFinished={workoutFinished} workoutRunning={workoutRunning} setWorkoutRunning={setWorkoutRunning} />}
+            {workout.exercises.length > 0 && <Workout setWorkoutFinished={setWorkoutFinished} workoutFinished={workoutFinished} workoutRunning={workoutRunning} setWorkoutRunning={setWorkoutRunning} />}
           </div>
         </div>
       )}
