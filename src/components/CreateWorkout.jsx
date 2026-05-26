@@ -18,31 +18,34 @@ export default function CreateWorkout() {
     <Dialog>
       <form>
         <DialogTrigger asChild>
-          <Button className="bg-black text-white" variant="outline">+ Create Workout</Button>
+          <Button className="bg-black text-white cursor-pointer" variant="outline">+ Create Workout</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-sm">
           <DialogHeader>
-            <DialogTitle>Edit profile</DialogTitle>
+            <DialogTitle className="font-bold">Create Workout</DialogTitle>
             <DialogDescription>
-              Make changes to your profile here. Click save when you&apos;re
-              done.
+              Enter workout details
             </DialogDescription>
           </DialogHeader>
           <FieldGroup>
             <Field>
-              <Label htmlFor="name-1">Name</Label>
-              <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
+              <Label htmlFor="name-1">Day of the week</Label>
+              <Input id="name-1" name="name" placeholder="Example: monday" />
             </Field>
             <Field>
-              <Label htmlFor="username-1">Username</Label>
-              <Input id="username-1" name="username" defaultValue="@peduarte" />
+              <Label htmlFor="username-1">Muscles you are hitting</Label>
+              <Input id="username-1" name="username" placeholder="Example: back and biceps"/>
+            </Field>
+            <Field>
+              <Label htmlFor="username-1">Workout time (minutes)</Label>
+              <Input id="username-1" type="number" name="username" placeholder="Example: 60"/>
             </Field>
           </FieldGroup>
           <DialogFooter>
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
-            <Button type="submit">Save changes</Button>
+            <Button type="submit">💪Create workout</Button>
           </DialogFooter>
         </DialogContent>
       </form>
