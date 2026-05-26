@@ -14,6 +14,7 @@ function App() {
   const [sets, setSets] = useState(0)
   const [reps, setReps] = useState(0)
   const [finishedSets, setFinishedSets] = useState(0);
+  const [exerciseId, setExerciseId] = useState(0);
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
@@ -37,8 +38,8 @@ function App() {
           <h1 className="text-3xl text-center font-bold text-gray-400">💪🏽{workout.muscles}</h1>
           <h1 className="text-xl text-center font-bold text-gray-500">⏳{workout.time} minutes</h1>
           <div className="w-full flex flex-col justify-center items-center space-y-5">
-            {workout.exercises.map((ex, index) => (
-              <div key={index} className="grid grid-cols-3 w-full justify-center items-center text-center">
+            {workout.exercises.map((ex) => (
+              <div key={ex.exerciseId} className="grid grid-cols-3 w-full justify-center items-center text-center">
                 <h2 className="flex flex-col">
                   <p className="font-bold">Exercise</p>
                   <p>{ex.exerciseName}</p>
@@ -66,6 +67,8 @@ function App() {
               setReps={setReps}
               workout={workout}
               setWorkout={setWorkout}
+              exerciseId={exerciseId}
+              setExerciseId={setExerciseId}
             />
           </div>
         </div>}

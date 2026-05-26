@@ -23,7 +23,9 @@ export default function AddExerise({
     sets,
     setSets,
     reps,
-    setReps
+    setReps,
+    exerciseId,
+    setExerciseId
 }) {
     
 
@@ -34,6 +36,7 @@ export default function AddExerise({
         }
 
         const newExercise = {
+            exerciseId,
             exerciseName,
             sets: parseInt(sets),
             reps: parseInt(reps)
@@ -52,6 +55,8 @@ export default function AddExerise({
         setExerciseName("");
         setSets(0);
         setReps(0);
+        setExerciseId(exerciseId + 1);
+        console.log(newExercise);
     }
 
   return (
