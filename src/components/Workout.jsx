@@ -16,7 +16,7 @@ import { Label } from "../components/ui/label"
 import { useState } from "react"
 import { useTimer } from 'react-timer-hook';
 
-export default function Workout({workoutRunning, setWorkoutRunning}) {
+export default function Workout({workoutRunning, setWorkoutRunning, workoutFinished}) {
 
     const startWorkout = () => {
         setWorkoutRunning(true);
@@ -25,9 +25,10 @@ export default function Workout({workoutRunning, setWorkoutRunning}) {
   return (
       <Dialog>
       <form>
-        <DialogTrigger asChild>
+        {!workoutFinished && <DialogTrigger asChild>
           <Button className="bg-green-600 text-white cursor-pointer" variant="outline">{workoutRunning ? "Finish Workout" : "Start Workout"}</Button>
-        </DialogTrigger>
+        </DialogTrigger>}
+        
         <DialogContent className="sm:max-w-sm">
           <DialogHeader>
             <DialogTitle className="font-bold">Are you ready?!</DialogTitle>

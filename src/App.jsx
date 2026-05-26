@@ -5,6 +5,7 @@ import AddExerise from "./components/AddExerise";
 import DeleteExercise from "./components/DeleteExercise";
 import Workout from "./components/Workout";
 import FinishSet from "./components/FinishSet";
+import Timer from "./components/Timer";
 
 function App() {
   const [dayOfWeek, setDayOfWeek] = useState("");
@@ -19,6 +20,12 @@ function App() {
   const [finishedSets, setFinishedSets] = useState(0);
   const [exerciseId, setExerciseId] = useState(0);
   const [workoutRunning, setWorkoutRunning] = useState(false);
+  const [workoutFinished, setWorkoutFinished] = useState(false);
+
+  const time = new Date();
+  time.setSeconds(time.getSeconds() + minutes * 60); // 10 minutes timer
+  
+  
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
@@ -44,13 +51,14 @@ function App() {
             💪🏽{workout.muscles}
           </h1>
           <h1 className="text-xl text-center font-bold text-gray-500">
-            ⏳{workout.time} minutes
+            
+            {workoutRunning ? <Timer setWorkoutRunning={setWorkoutRunning} setWorkoutFinished={setWorkoutFinished} expiryTimestamp={time} /> :  `⏳${workout.time} minutes`}
           </h1>
           <div className="w-full flex flex-col justify-center items-center space-y-5">
             {workout.exercises.map((ex) => (
               <div
                 key={ex.exerciseId}
-                className={!workoutRunning ? 
+                className={!workoutRunning && !workoutFinished ? 
                   `grid grid-cols-4 w-full justify-center items-center text-center` 
                   : `grid grid-cols-3 w-full justify-center items-center text-center` 
                 }
@@ -69,14 +77,14 @@ function App() {
                   <p className="font-bold">Reps</p>
                   <p>{ex.reps}</p>
                 </h2>
-                {!workoutRunning && <DeleteExercise
+                {!workoutRunning && !workoutFinished && <DeleteExercise
                   workout={workout}
                   setWorkout={setWorkout}
                   delId={ex.exerciseId}
                 />}
               </div>
             ))}
-            {!workoutRunning && (
+            {!workoutRunning && !workoutFinished && (
               <AddExerise
                 exercises={exercises}
                 setExercises={setExercises}
@@ -94,7 +102,7 @@ function App() {
                 setExerciseId={setExerciseId}
               />
             )}
-            {workout.exercises.length > 0 && <Workout workoutRunning={workoutRunning} setWorkoutRunning={setWorkoutRunning} />}
+            {workout.exercises.length > 0 && <Workout workoutFinished={workoutFinished} workoutRunning={workoutRunning} setWorkoutRunning={setWorkoutRunning} />}
           </div>
         </div>
       )}

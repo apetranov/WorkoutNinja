@@ -57,7 +57,7 @@ export default function AddExerise({
         setSets(0);
         setReps(0);
         setExerciseId(exerciseId + 1);
-        console.log(newExercise);
+        // console.log(newExercise);
     }
 
   return (
