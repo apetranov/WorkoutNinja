@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "./components/ui/button";
 import CreateWorkout from "./components/CreateWorkout";
 import AddExerise from "./components/AddExerise";
+import DeleteExercise from "./components/DeleteExercise";
 
 function App() {
   const [dayOfWeek, setDayOfWeek] = useState("");
@@ -39,7 +40,7 @@ function App() {
           <h1 className="text-xl text-center font-bold text-gray-500">⏳{workout.time} minutes</h1>
           <div className="w-full flex flex-col justify-center items-center space-y-5">
             {workout.exercises.map((ex) => (
-              <div key={ex.exerciseId} className="grid grid-cols-3 w-full justify-center items-center text-center">
+              <div key={ex.exerciseId} className="grid grid-cols-4 w-full justify-center items-center text-center">
                 <h2 className="flex flex-col">
                   <p className="font-bold">Exercise</p>
                   <p>{ex.exerciseName}</p>
@@ -52,6 +53,11 @@ function App() {
                   <p className="font-bold">Reps</p>
                   <p>{ex.reps}</p>
                 </h2>
+                <DeleteExercise
+                  workout={workout}
+                  setWorkout={setWorkout}
+                  delId={ex.exerciseId}
+                />
               </div>
             ))}
             <AddExerise
