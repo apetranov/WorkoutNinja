@@ -14,6 +14,6 @@ export default function FinishSet({workout, setWorkout, exId}) {
     }
 
   return (
-    <Button onClick={handleFinishSet}>FinishSet</Button>
+    <Button onClick={handleFinishSet}>Finish Set</Button>
   )
 }
