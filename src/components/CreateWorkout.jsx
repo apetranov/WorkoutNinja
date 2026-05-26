@@ -19,7 +19,9 @@ export default function CreateWorkout({
   musclesToHit,
   setMusclesToHit,
   minutes,
-  setMinutes
+  setMinutes,
+  workout,
+  setWorkout
 }) {
   const handleCreateWorkout = () => {
     if (!dayOfWeek || !musclesToHit || !minutes) {
@@ -32,7 +34,15 @@ export default function CreateWorkout({
       return;
     }
 
-    
+    const newWorkout = {
+      day: dayOfWeek,
+      muscles: musclesToHit,
+      time: parseInt(minutes),
+      exercises: []
+    }
+
+    setWorkout(newWorkout);
+    // console.log(newWorkout);
   }
 
   return (
