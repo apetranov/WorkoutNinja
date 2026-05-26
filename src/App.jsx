@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "./components/ui/button";
 import CreateWorkout from "./components/CreateWorkout";
 import AddExerise from "./components/AddExerise";
@@ -22,10 +22,21 @@ function App() {
   const [exerciseId, setExerciseId] = useState(0);
   const [workoutRunning, setWorkoutRunning] = useState(false);
   const [workoutFinished, setWorkoutFinished] = useState(false);
+  const [expiryTime, setExpiryTime] = useState(null);
 
-  const time = new Date();
-  time.setSeconds(time.getSeconds() + minutes * 60); // 10 minutes timer
-  
+  useEffect(() => {
+    if (workoutRunning && !expiryTime) {
+      const time = new Date();
+      time.setSeconds(time.getSeconds() + minutes * 60);
+      setExpiryTime(time);
+    }
+  }, [workoutRunning, expiryTime, minutes]);
+
+  useEffect(() => {
+    if (workoutFinished) {
+      setExpiryTime(null);
+    }
+  }, [workoutFinished]);
   
 
   return (
@@ -55,7 +66,7 @@ function App() {
           </h1>
           <h1 className="text-xl text-center font-bold text-gray-500">
             
-            {workoutRunning ? <Timer setWorkoutRunning={setWorkoutRunning} setWorkoutFinished={setWorkoutFinished} expiryTimestamp={time} /> :  `⏳${workout.time} minutes`}
+            {workoutRunning && expiryTime ? <Timer setWorkoutRunning={setWorkoutRunning} setWorkoutFinished={setWorkoutFinished} expiryTimestamp={expiryTime} /> :  `⏳${workout.time} minutes`}
           </h1>
           <div className="w-full flex flex-col justify-center items-center space-y-5">
             {workout.exercises.map((ex) => (

@@ -29,8 +29,8 @@ export default function CreateWorkout({
       return;
     }
 
-    if (minutes <= 0) {
-      alert("Please enter valid minutes")
+    if (minutes <= 0 || minutes > 1439) {
+      alert("Please enter valid minutes (cannot be more than 1439)")
       return;
     }
 

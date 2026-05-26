@@ -24,7 +24,7 @@ function Timer({ expiryTimestamp, setWorkoutFinished, setWorkoutRunning }) {
     <div >
       
       <div >
-        <span>⏳{minutes}</span>:<span>{seconds}</span>
+        ⏳<span>{hours}:</span><span>{minutes}</span>:<span>{seconds}</span>
       </div>
     </div>
   );
