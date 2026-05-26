@@ -6,6 +6,7 @@ import DeleteExercise from "./components/DeleteExercise";
 import Workout from "./components/Workout";
 import FinishSet from "./components/FinishSet";
 import Timer from "./components/Timer";
+import FAQ from "./components/FAQ";
 
 function App() {
   const [dayOfWeek, setDayOfWeek] = useState("");
@@ -30,8 +31,10 @@ function App() {
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
       {Object.keys(workout).length == 0 && (
-        <div className="flex flex-col justify-center items-center">
-          <h1 className="text-3xl md:text-5xl font-bold">🥷WorkoutNinja</h1>
+        <div className="flex space-y-5 w-full md:w-3/4 lg:w-2/3 flex-col justify-center items-center">
+          <h1 className="text-3xl md:text-5xl font-bold">🥷<span className="text-yellow-300">Workout</span>Ninja</h1>
+          <h1 className="text-xl md:text-3xl font-bold">FAQ</h1>
+          <FAQ />
           <CreateWorkout
             dayOfWeek={dayOfWeek}
             setDayOfWeek={setDayOfWeek}
