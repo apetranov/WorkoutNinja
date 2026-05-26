@@ -39,7 +39,8 @@ export default function AddExerise({
             exerciseId,
             exerciseName,
             sets: parseInt(sets),
-            reps: parseInt(reps)
+            reps: parseInt(reps),
+            finishedSets: 0
         }
 
         if (workout.exercises.length == 10) {
@@ -78,12 +79,12 @@ export default function AddExerise({
               <Input id="name-1" value={exerciseName} onChange={(e) => setExerciseName(e.target.value)} name="name" placeholder="Example: bench press" />
             </Field>
             <Field>
-              <Label htmlFor="username-1">Sets of exercise</Label>
-              <Input id="username-1" value={sets} onChange={(e) => setSets(e.target.value)} type="number" name="username" placeholder="Example: 3"/>
+              <Label htmlFor="sets-1">Sets of exercise</Label>
+              <Input id="sets-1" value={sets} onChange={(e) => setSets(e.target.value)} type="number" name="sets" placeholder="Example: 3"/>
             </Field>
             <Field>
-              <Label htmlFor="username-1">Reps per set</Label>
-              <Input id="username-1" value={reps} onChange={(e) => setReps(e.target.value)} type="number" name="username" placeholder="Example: 12"/>
+              <Label htmlFor="reps-1">Reps per set</Label>
+              <Input id="reps-1" value={reps} onChange={(e) => setReps(e.target.value)} type="number" name="reps" placeholder="Example: 12"/>
             </Field>
           </FieldGroup>
           <DialogFooter>
