@@ -12,19 +12,25 @@ function Timer({ expiryTimestamp, setWorkoutFinished, setWorkoutRunning }) {
     isRunning,
     start,
   } = useTimer({ expiryTimestamp, onExpire: () => console.warn('onExpire called'), interval: 20 });
-//   console.log(minutes, seconds);
+  
   useEffect(() => {
-    if (minutes === 0 && seconds === 0) {
+    start();
+  }, [start]);
+
+  useEffect(() => {
+    if (totalSeconds <= 0) {
         setWorkoutFinished(true);
         setWorkoutRunning(false);
     }
-  },[minutes, seconds])
+  }, [totalSeconds, setWorkoutFinished, setWorkoutRunning]);
+
+  const pad = (num) => String(num).padStart(2, '0');
 
   return (
     <div >
       
       <div >
-        ⏳<span>{hours}:</span><span>{minutes}</span>:<span>{seconds}</span>
+        ⏳<span>{pad(hours)}:</span><span>{pad(minutes)}</span>:<span>{pad(seconds)}</span>
       </div>
     </div>
   );
