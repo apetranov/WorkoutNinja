@@ -54,8 +54,8 @@ export default function AddExerise({
         });
 
         setExerciseName("");
-        setSets(0);
-        setReps(0);
+        setSets("");
+        setReps("");
         setExerciseId(exerciseId + 1);
         // console.log(newExercise);
     }
