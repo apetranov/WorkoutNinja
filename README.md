@@ -5,4 +5,5 @@ MVP Features:
 
 3. Workout completed - after all of the exercises in a workout have been complete user is shown the amount of time it took to finish the workout
 
+# Video demo
 https://github.com/user-attachments/assets/644e82f6-84b3-4075-b65d-4e136345ca79
